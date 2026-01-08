@@ -1,65 +1,424 @@
+"use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+  Globe, Users, BookOpen, Zap, Landmark, 
+  MapPin, Phone, Mail, FileText, CheckCircle2, 
+  Sprout, Activity, ShieldCheck, Heart, Lightbulb,
+  Bus, Droplets, Radio, Building2, TrendingUp,
+  Facebook, Twitter, Instagram, Youtube, ChevronRight,
+  Quote, Award, Star, Search
+} from "lucide-react";
 
-export default function Home() {
+const navLinks = [
+  { name: "Vision 2026", href: "#vision" },
+  { name: "The Leader", href: "#leader" },
+  { name: "Development", href: "#pillars" },
+  { name: "Village Life", href: "#collage" },
+  { name: "Governance", href: "#stats" },
+  { name: "FAQ", href: "#faq" },
+];
+
+export default function UltimateLeaderWebsite() {
+  const [scrolled, setScrolled] = useState(false);
+  const [activeFaq, setActiveFaq] = useState<number | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const toggleFaq = (index: number) => {
+    setActiveFaq(activeFaq === index ? null : index);
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="bg-[#fcfcfc] font-sans text-slate-900 leading-relaxed antialiased overflow-x-hidden">
+      
+      {/* 1. STICKY NAVIGATION */}
+      <nav className={`fixed top-0 w-full z-[100] transition-all duration-500 ${scrolled ? "bg-white/95 backdrop-blur-md py-3 shadow-lg" : "bg-transparent py-8"}`}>
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 bg-blue-600 text-white flex items-center justify-center font-black rounded-xl shadow-lg rotate-3">A</div>
+            <div className="flex flex-col">
+              <span className="text-base font-black uppercase tracking-tighter leading-none">Aryan Patel</span>
+              <span className="text-[10px] font-bold text-blue-600 uppercase tracking-[3px] mt-1">Mission Punsari 2026</span>
+            </div>
+          </div>
+          <ul className="hidden lg:flex gap-8 text-[11px] font-black uppercase tracking-[2px] text-slate-600">
+            {navLinks.map((link) => (
+              <li key={link.name}>
+                <Link href={link.href} className="hover:text-blue-600 transition-all hover:tracking-widest border-b-2 border-transparent hover:border-blue-600 pb-1">{link.name}</Link>
+              </li>
+            ))}
+          </ul>
+          <div className="hidden md:flex gap-4">
+             <Facebook size={18} className="text-slate-400 hover:text-blue-600 cursor-pointer transition-all" />
+             <Twitter size={18} className="text-slate-400 hover:text-sky-500 cursor-pointer transition-all" />
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </nav>
+
+      {/* 2. HERO SECTION */}
+      <section id="vision" className="relative min-h-screen flex items-center pt-24 px-6 overflow-hidden bg-slate-50">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
+          <motion.div className="lg:col-span-7 z-10" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-600 text-white text-[10px] font-black uppercase tracking-[4px] mb-8 shadow-xl">
+              <Star size={12} fill="white" /> Model Village Of India
+            </div>
+            <h1 className="text-6xl md:text-[110px] font-black text-slate-900 uppercase leading-[0.85] mb-8 tracking-tighter">
+              Gramin <span className="text-blue-600">Atma,</span> <br/>Shehri <span className="text-slate-400">Suvidha.</span>
+            </h1>
+            <p className="text-xl text-slate-600 font-bold max-w-2xl leading-relaxed uppercase tracking-tight mb-10">
+              Transforming Punsari into a Global Benchmark. Where technology meets tradition to serve the last person in the last household.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+               <div className="bg-white p-5 border-t-4 border-blue-600 shadow-xl rounded-b-xl">
+                  <p className="text-[10px] font-black text-slate-400 uppercase mb-2">Financial Status</p>
+                  <p className="text-sm font-black uppercase text-slate-800">₹75L+ Surplus</p>
+               </div>
+               <div className="bg-white p-5 border-t-4 border-blue-600 shadow-xl rounded-b-xl">
+                  <p className="text-[10px] font-black text-slate-400 uppercase mb-2">Security</p>
+                  <p className="text-sm font-black uppercase text-slate-800">CCTV Enabled</p>
+               </div>
+               <div className="bg-white p-5 border-t-4 border-blue-600 shadow-xl rounded-b-xl">
+                  <p className="text-[10px] font-black text-slate-400 uppercase mb-2">Energy</p>
+                  <p className="text-sm font-black uppercase text-slate-800">Solar Grid</p>
+               </div>
+            </div>
+          </motion.div>
+          <div className="lg:col-span-5 relative grid grid-cols-2 gap-4">
+            <div className="space-y-4 pt-12">
+               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border-4 border-white"><Image src="/images/img.jpeg" fill className="object-cover" alt="Aryan Patel" /></div>
+               <div className="relative aspect-square rounded-2xl overflow-hidden shadow-xl"><Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767774287/WhatsApp_Image_2026-01-07_at_12.47.44_PM_1_toy9rh.jpg" fill className="object-cover" alt="School" /></div>
+            </div>
+            <div className="space-y-4">
+               <div className="relative aspect-square rounded-2xl overflow-hidden shadow-xl"><Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767774292/WhatsApp_Image_2026-01-07_at_12.47.57_PM_1_e556te.jpg" fill className="object-cover" alt="Village" /></div>
+               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border-4 border-white"><Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767774293/WhatsApp_Image_2026-01-07_at_12.47.58_PM_zgcqwp.jpg" fill className="object-cover" alt="Agriculture" /></div>
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* NEW: AWARDS MARQUEE SECTION */}
+      <div className="bg-slate-900 py-10 overflow-hidden border-y border-white/10">
+        <div className="flex whitespace-nowrap animate-marquee">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="flex items-center gap-16 px-8">
+              <span className="text-white/40 text-sm font-black uppercase tracking-[6px] flex items-center gap-4"><Award className="text-blue-500" /> Best Gram Panchayat Gujarat</span>
+              <span className="text-white/40 text-sm font-black uppercase tracking-[6px] flex items-center gap-4"><Award className="text-blue-500" /> Nirmal Gram Puraskar</span>
+              <span className="text-white/40 text-sm font-black uppercase tracking-[6px] flex items-center gap-4"><Award className="text-blue-500" /> Swarnim Gram Award</span>
+              <span className="text-white/40 text-sm font-black uppercase tracking-[6px] flex items-center gap-4"><Award className="text-blue-500" /> ISO 9001:2008 Certified</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 3. THE LEADER'S BIOGRAPHY */}
+      <section id="leader" className="py-24 px-6 bg-white">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-start">
+          <div className="sticky top-28">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl shadow-2xl border-8 border-slate-50">
+              <Image src="/images/img.jpeg" fill className="object-cover" alt="Leader Aryan" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-10 text-white">
+                 <p className="text-xs font-black uppercase tracking-[4px] text-blue-400 mb-2">The Face Of Change</p>
+                 <h2 className="text-4xl font-black uppercase tracking-tighter">Aryan Himanshu Patel</h2>
+                 <p className="text-sm font-bold uppercase mt-4 text-white/70 tracking-widest leading-relaxed">
+                   "Development is not a favor to the people; it is the duty of the leadership."
+                 </p>
+              </div>
+            </div>
+          </div>
+          <div className="space-y-10">
+            <div>
+              <h3 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-slate-900 mb-8">The Architect of <br/> Modern Governance</h3>
+              <p className="text-lg text-slate-600 font-medium leading-relaxed mb-6 italic border-l-4 border-blue-600 pl-6">
+                Under the visionary guidance of the Patel family, Punsari transitioned from a debt of ₹1 Lakh in 2006 to a surplus of ₹75 Lakhs today, without a single penny from NGOs or NRI funding.
+              </p>
+              <p className="text-lg text-slate-600 font-medium leading-relaxed mb-8">
+                Aryan Patel believes in **Land Monetization** and **Self-Sustainability**. By auctioning panchayat land for residential use, he generated the seed capital needed to build RO plants, smart schools, and digital grids.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                 <div className="p-6 bg-blue-50 rounded-2xl">
+                    <TrendingUp className="text-blue-600 mb-4" size={28} />
+                    <h4 className="font-black uppercase text-sm mb-2 text-blue-900">Revenue Innovation</h4>
+                    <p className="text-xs font-bold text-slate-500 uppercase tracking-tight">Utilizing 95% tax collection efficiency for local development projects.</p>
+                 </div>
+                 <div className="p-6 bg-slate-50 rounded-2xl">
+                    <ShieldCheck className="text-slate-900 mb-4" size={28} />
+                    <h4 className="font-black uppercase text-sm mb-2 text-slate-900">Safe Village</h4>
+                    <p className="text-xs font-bold text-slate-500 uppercase tracking-tight">Zero theft recorded since 2021 due to tech-driven surveillance.</p>
+                 </div>
+              </div>
+            </div>
+            <div className="relative h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+               <Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767784998/ChatGPT_Image_Jan_7_2026_04_52_10_PM_xqujx1.png" fill className="object-cover" alt="Governance" />
+               <div className="absolute top-6 left-6 bg-white px-4 py-2 rounded-lg shadow-lg">
+                  <p className="text-[10px] font-black uppercase text-blue-600 tracking-widest">Public Meeting 2025</p>
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. DEVELOPMENT PILLARS */}
+      <section id="pillars" className="py-24 px-6 bg-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-slate-900">Strategic Pillars</h2>
+            <p className="text-blue-600 font-black uppercase text-xs tracking-[5px] mt-6">Sustainable Infrastructure Framework</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {[
+              { icon: <Droplets/>, title: "Pure RO Water", desc: "Mineral water at ₹4/20L. 100% piped connectivity to every home.", img: "https://res.cloudinary.com/dpccapers/image/upload/v1767774292/WhatsApp_Image_2026-01-07_at_12.47.57_PM_1_e556te.jpg" },
+              { icon: <BookOpen/>, title: "Digital Education", desc: "Smart boards, zero-dropout rate, and air-conditioned libraries.", img: "https://res.cloudinary.com/dpccapers/image/upload/v1767774287/WhatsApp_Image_2026-01-07_at_12.47.44_PM_1_toy9rh.jpg" },
+              { icon: <Bus/>, title: "Atal Express", desc: "Village bus service. Free for students, ₹3 for others per trip.", img: "https://res.cloudinary.com/dpccapers/image/upload/v1767774290/WhatsApp_Image_2026-01-07_at_12.47.47_PM_1_ipdzzt.jpg" },
+              { icon: <Radio/>, title: "Smart Broadcast", desc: "120 speakers connected to the Sarpanch office for live updates.", img: "https://res.cloudinary.com/dpccapers/image/upload/v1767784998/ChatGPT_Image_Jan_7_2026_04_52_10_PM_xqujx1.png" },
+              { icon: <Building2/>, title: "Women Economic Wing", desc: "111 Sakhi Mandals empowering 1200+ rural women entrepreneurs.", img: "https://res.cloudinary.com/dpccapers/image/upload/v1767774291/WhatsApp_Image_2026-01-07_at_12.47.56_PM_1_pncm9s.jpg" },
+              { icon: <ShieldCheck/>, title: "Safe Governance", desc: "24x7 CCTV monitoring for streets, schools, and public assets.", img: "https://res.cloudinary.com/dpccapers/image/upload/v1767774293/WhatsApp_Image_2026-01-07_at_12.47.58_PM_zgcqwp.jpg" },
+            ].map((p, i) => (
+              <div key={i} className="group bg-white rounded-[2rem] overflow-hidden shadow-xl border border-slate-100 transition-all hover:-translate-y-2 flex flex-col h-full">
+                <div className="relative h-72 overflow-hidden">
+                   <Image src={p.img} fill className="object-cover transition-transform duration-700 group-hover:scale-110" alt={p.title} />
+                   <div className="absolute inset-0 bg-blue-600/10 group-hover:bg-transparent transition-all"></div>
+                   <div className="absolute bottom-4 left-4 bg-white p-3 rounded-2xl text-blue-600 shadow-2xl">
+                      {p.icon}
+                   </div>
+                </div>
+                <div className="p-10 flex-1">
+                  <h4 className="text-xl font-black uppercase text-slate-900 mb-4 tracking-tighter">{p.title}</h4>
+                  <p className="text-sm font-bold text-slate-500 uppercase leading-relaxed tracking-tight">{p.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. IMAGE COLLAGE SECTION */}
+      <section id="collage" className="py-24 px-6 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+           <div className="flex justify-between items-end mb-16">
+              <div>
+                <h2 className="text-4xl font-black uppercase tracking-tighter">Life In Punsari</h2>
+                <p className="text-blue-600 font-black text-xs uppercase tracking-[5px] mt-2">Documenting Daily Progress</p>
+              </div>
+              <div className="hidden md:block text-right">
+                <p className="text-xs font-black uppercase text-slate-300 tracking-[2px]">Archive-2025</p>
+              </div>
+           </div>
+           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 auto-rows-[300px]">
+              <div className="relative col-span-2 row-span-2 rounded-[2.5rem] overflow-hidden shadow-2xl"><Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767774292/WhatsApp_Image_2026-01-07_at_12.47.57_PM_1_e556te.jpg" fill className="object-cover" alt="c1" /></div>
+              <div className="relative col-span-1 row-span-1 rounded-[2.5rem] overflow-hidden shadow-xl hover:rotate-2 transition-all"><Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767774287/WhatsApp_Image_2026-01-07_at_12.47.44_PM_1_toy9rh.jpg" fill className="object-cover" alt="c2" /></div>
+              <div className="relative col-span-1 row-span-2 rounded-[2.5rem] overflow-hidden shadow-xl"><Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767774291/WhatsApp_Image_2026-01-07_at_12.47.53_PM_csorlt.jpg" fill className="object-cover" alt="c3" /></div>
+              <div className="relative col-span-1 row-span-1 rounded-[2.5rem] overflow-hidden shadow-xl hover:-rotate-2 transition-all"><Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767774290/WhatsApp_Image_2026-01-07_at_12.47.47_PM_1_ipdzzt.jpg" fill className="object-cover" alt="c4" /></div>
+              <div className="relative col-span-2 row-span-1 rounded-[2.5rem] overflow-hidden shadow-xl"><Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767784998/ChatGPT_Image_Jan_7_2026_04_52_10_PM_xqujx1.png" fill className="object-cover" alt="c5" /></div>
+              <div className="relative col-span-1 row-span-1 rounded-[2.5rem] overflow-hidden shadow-xl"><Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767774293/WhatsApp_Image_2026-01-07_at_12.47.58_PM_zgcqwp.jpg" fill className="object-cover" alt="c6" /></div>
+           </div>
+        </div>
+      </section>
+
+      {/* NEW: TESTIMONIALS SECTION */}
+      <section className="py-24 px-6 bg-slate-900 text-white overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-16 items-center">
+            <div className="md:w-1/3">
+               <h3 className="text-5xl font-black uppercase tracking-tighter leading-none mb-6 italic">Voices of <br/> The Village.</h3>
+               <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">Stories from the residents who built this dream together with Aryan Patel.</p>
+            </div>
+            <div className="md:w-2/3 grid md:grid-cols-2 gap-8">
+               <div className="bg-white/5 p-10 rounded-3xl border border-white/10 backdrop-blur-md">
+                  <Quote size={40} className="text-blue-500 mb-6 opacity-40" />
+                  <p className="text-lg font-medium leading-relaxed uppercase tracking-tight mb-8">"Atal Express has changed the lives of women in our dairy sector. We can now reach the market safely and on time."</p>
+                  <div className="flex items-center gap-4">
+                     <div className="w-12 h-12 rounded-full bg-blue-600"></div>
+                     <div><p className="text-sm font-black uppercase">Sunita Ben</p><p className="text-[10px] font-bold text-slate-500 uppercase">Sakhi Mandal Lead</p></div>
+                  </div>
+               </div>
+               <div className="bg-white/5 p-10 rounded-3xl border border-white/10 backdrop-blur-md">
+                  <Quote size={40} className="text-blue-500 mb-6 opacity-40" />
+                  <p className="text-lg font-medium leading-relaxed uppercase tracking-tight mb-8">"Our kids now study in air-conditioned smart schools. The digital classrooms are at par with city schools."</p>
+                  <div className="flex items-center gap-4">
+                     <div className="w-12 h-12 rounded-full bg-slate-700"></div>
+                     <div><p className="text-sm font-black uppercase">Ramjibhai Kaka</p><p className="text-[10px] font-bold text-slate-500 uppercase">Local Farmer</p></div>
+                  </div>
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. GOVERNANCE & STATS */}
+      <section id="stats" className="py-24 bg-white text-slate-900 px-6 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <div>
+              <h3 className="text-4xl font-black uppercase tracking-tighter mb-8 leading-none">Financial <br/> Discipline.</h3>
+              <p className="text-slate-500 font-bold uppercase tracking-widest text-sm mb-12 italic border-l-4 border-slate-900 pl-6 leading-relaxed">
+                "Punsari does not rely on foreign aid. We believe in the power of Indian villages to generate their own wealth through smart administration."
+              </p>
+              <div className="space-y-4">
+                {[
+                  { label: "Admin Staff", val: "22 Professionals", p: "100%" },
+                  { label: "Tax Collection", val: "95% Annual Recovery", p: "95%" },
+                  { label: "Infrastructure Growth", val: "300% In 5 Years", p: "100%" },
+                  { label: "Youth Employment", val: "Local Ventures", p: "80%" },
+                ].map((s, i) => (
+                  <div key={i} className="space-y-2">
+                    <div className="flex justify-between items-end">
+                       <span className="text-[11px] font-black uppercase text-slate-400 tracking-[2px]">{s.label}</span>
+                       <span className="text-sm font-black text-slate-900 uppercase">{s.val}</span>
+                    </div>
+                    <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                       <motion.div initial={{ width: 0 }} whileInView={{ width: s.p }} className="h-full bg-blue-600"></motion.div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="relative aspect-square md:aspect-video rounded-[3rem] overflow-hidden shadow-2xl border-4 border-slate-50">
+               <Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767785378/ChatGPT_Image_Jan_7_2026_04_52_10_PM_xqujx1.png" fill className="object-cover" alt="Data" />
+               <div className="absolute inset-0 bg-blue-900/10"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NEW: FAQ SECTION */}
+      <section id="faq" className="py-24 px-6 bg-slate-50">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+             <h2 className="text-4xl font-black uppercase tracking-tighter">Public Queries</h2>
+             <p className="text-blue-600 font-black text-xs uppercase tracking-[5px] mt-4">Addressing Transparency</p>
+          </div>
+          <div className="space-y-4">
+             {[
+               { q: "Is Punsari funded by NRIs?", a: "No. All projects are funded through Government schemes and the Panchayat's own generated income (Land auction & Taxes)." },
+               { q: "How is the water so affordable?", a: "We run our RO plants on a no-profit model. The electricity is subsidized by our village solar grid." },
+               { q: "Can other villages replicate this?", a: "Yes. Our 'Punsari Model' is a standard framework being studied by the World Bank and other state governments." },
+               { q: "How do you achieve Zero Dropout?", a: "By providing free bus transport, digital engagement, and regular parent-teacher transparency." }
+             ].map((item, idx) => (
+               <div key={idx} className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+                  <button onClick={() => toggleFaq(idx)} className="w-full flex justify-between items-center p-6 text-left hover:bg-slate-50 transition-all">
+                     <span className="text-sm font-black uppercase text-slate-800 tracking-tight">{item.q}</span>
+                     <ChevronRight size={20} className={`text-blue-600 transition-transform ${activeFaq === idx ? "rotate-90" : ""}`} />
+                  </button>
+                  <AnimatePresence>
+                    {activeFaq === idx && (
+                      <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="overflow-hidden">
+                         <div className="p-6 pt-0 text-sm font-bold text-slate-500 uppercase leading-relaxed border-t border-slate-100 bg-slate-50/50">
+                            {item.a}
+                         </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+               </div>
+             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="bg-slate-900 text-white pt-24 pb-12 px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+           
+           {/* Column 1: Brand */}
+           <div className="space-y-8">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-blue-600 text-white flex items-center justify-center font-black rounded-xl">A</div>
+                <h3 className="text-xl font-black uppercase tracking-tighter">Aryan Patel</h3>
+              </div>
+              <p className="text-[11px] font-bold uppercase tracking-widest text-slate-500 leading-relaxed">
+                Punsari Gram Panchayat is a self-reliant "Smart Village" framework built on transparency, technology, and trust. 
+              </p>
+              <div className="flex gap-4">
+                 <Link href="#" className="p-3 bg-white/5 rounded-full hover:bg-blue-600 transition-all group">
+                    <Facebook size={18} className="text-slate-400 group-hover:text-white" />
+                 </Link>
+                 <Link href="#" className="p-3 bg-white/5 rounded-full hover:bg-pink-600 transition-all group">
+                    <Instagram size={18} className="text-slate-400 group-hover:text-white" />
+                 </Link>
+                 <Link href="#" className="p-3 bg-white/5 rounded-full hover:bg-sky-500 transition-all group">
+                    <Twitter size={18} className="text-slate-400 group-hover:text-white" />
+                 </Link>
+                 <Link href="#" className="p-3 bg-white/5 rounded-full hover:bg-red-600 transition-all group">
+                    <Youtube size={18} className="text-slate-400 group-hover:text-white" />
+                 </Link>
+              </div>
+           </div>
+
+           {/* Column 2: Quick Links */}
+           <div>
+              <h4 className="text-[10px] font-black uppercase tracking-[4px] text-blue-500 mb-8 underline underline-offset-8">Navigation</h4>
+              <ul className="space-y-4 text-[11px] font-black uppercase tracking-widest text-slate-400">
+                 {navLinks.map((l) => (
+                   <li key={l.name}><Link href={l.href} className="hover:text-white transition-all">/ {l.name}</Link></li>
+                 ))}
+                 <li><Link href="#" className="hover:text-white transition-all">/ Official Records</Link></li>
+              </ul>
+           </div>
+
+           {/* Column 3: Contact Info */}
+           <div>
+              <h4 className="text-[10px] font-black uppercase tracking-[4px] text-blue-500 mb-8 underline underline-offset-8">Connect</h4>
+              <div className="space-y-6 text-[11px] font-black uppercase tracking-widest text-slate-400">
+                 <div className="flex items-start gap-4">
+                    <Mail size={16} className="text-blue-500 mt-1"/>
+                    <p className="leading-relaxed hover:text-white">office@aryanpunsari.in <br/> <span className="text-[8px] opacity-40 italic">Inquiries</span></p>
+                 </div>
+                 <div className="flex items-start gap-4">
+                    <Phone size={16} className="text-blue-500 mt-1"/>
+                    <p className="leading-relaxed hover:text-white">+91 94220-XXXXX <br/> <span className="text-[8px] opacity-40 italic">Gram Sevak</span></p>
+                 </div>
+                 <div className="flex items-start gap-4">
+                    <MapPin size={16} className="text-blue-500 mt-1"/>
+                    <p className="leading-relaxed hover:text-white">Main Road, Punsari <br/> Sabarkantha, Gujarat</p>
+                 </div>
+              </div>
+           </div>
+
+           {/* Column 4: Awards */}
+           <div>
+              <h4 className="text-[10px] font-black uppercase tracking-[4px] text-blue-500 mb-8 underline underline-offset-8">Official Honors</h4>
+              <div className="grid grid-cols-2 gap-4">
+                 <div className="p-3 bg-white/5 rounded-xl text-[8px] font-black uppercase border border-white/10 text-center flex items-center justify-center">Nirmal Gram Puraskar</div>
+                 <div className="p-3 bg-white/5 rounded-xl text-[8px] font-black uppercase border border-white/10 text-center flex items-center justify-center">Swarnim Gram</div>
+                 <div className="p-3 bg-white/5 rounded-xl text-[8px] font-black uppercase border border-white/10 text-center flex items-center justify-center">Best Panchayat</div>
+                 <div className="p-3 bg-white/5 rounded-xl text-[8px] font-black uppercase border border-white/10 text-center flex items-center justify-center">ISO Certified</div>
+              </div>
+           </div>
+
+        </div>
+        
+        {/* Bottom Bar */}
+        <div className="max-w-7xl mx-auto pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+           <div className="flex flex-col gap-2">
+             <p className="text-[9px] font-black uppercase tracking-[5px] text-slate-600">© 2026 Strategic Development Cell | Punsari Village</p>
+             <p className="text-[8px] font-bold uppercase tracking-[2px] text-slate-700 italic">Designed with Vision for Aryan Patel Campaign</p>
+           </div>
+           <div className="flex gap-8 text-[9px] font-black uppercase tracking-[3px] text-slate-500">
+              <span className="hover:text-blue-500 cursor-pointer">Privacy Policy</span>
+              <span className="hover:text-blue-500 cursor-pointer">Transparency Report</span>
+           </div>
+        </div>
+      </footer>
+
+      {/* Global CSS for Marquee Animation */}
+      <style jsx global>{`
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-33.33%); }
+        }
+        .animate-marquee {
+          display: flex;
+          animation: marquee 25s linear infinite;
+        }
+      `}</style>
+
+    </main>
   );
 }
