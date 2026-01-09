@@ -12,14 +12,7 @@ import {
   Quote, Award, Star, Search
 } from "lucide-react";
 
-const navLinks = [
-  { name: "Vision 2026", href: "#vision" },
-  { name: "The Leader", href: "#leader" },
-  { name: "Development", href: "#pillars" },
-  { name: "Village Life", href: "#collage" },
-  { name: "Governance", href: "#stats" },
-  { name: "FAQ", href: "#faq" },
-];
+
 
 export default function UltimateLeaderWebsite() {
   const [scrolled, setScrolled] = useState(false);
@@ -39,28 +32,18 @@ export default function UltimateLeaderWebsite() {
     <main className="bg-[#fcfcfc] font-sans text-slate-900 leading-relaxed antialiased overflow-x-hidden">
       
       {/* 1. STICKY NAVIGATION */}
-      <nav className={`fixed top-0 w-full z-[100] transition-all duration-500 ${scrolled ? "bg-white/95 backdrop-blur-md py-3 shadow-lg" : "bg-transparent py-8"}`}>
+      {/* <nav className={`fixed top-0 w-full z-[100] transition-all duration-500 ${scrolled ? "bg-white/95 backdrop-blur-md py-3 shadow-lg" : "bg-transparent py-8"}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 bg-blue-600 text-white flex items-center justify-center font-black rounded-xl shadow-lg rotate-3">A</div>
-            <div className="flex flex-col">
-              <span className="text-base font-black uppercase tracking-tighter leading-none">Aryan Patel</span>
-              <span className="text-[10px] font-bold text-blue-600 uppercase tracking-[3px] mt-1">Mission Punsari 2026</span>
-            </div>
           </div>
-          <ul className="hidden lg:flex gap-8 text-[11px] font-black uppercase tracking-[2px] text-slate-600">
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <Link href={link.href} className="hover:text-blue-600 transition-all hover:tracking-widest border-b-2 border-transparent hover:border-blue-600 pb-1">{link.name}</Link>
-              </li>
-            ))}
-          </ul>
+        
           <div className="hidden md:flex gap-4">
              <Facebook size={18} className="text-slate-400 hover:text-blue-600 cursor-pointer transition-all" />
              <Twitter size={18} className="text-slate-400 hover:text-sky-500 cursor-pointer transition-all" />
           </div>
         </div>
-      </nav>
+      </nav> */}
 
       {/* 2. HERO SECTION */}
       <section id="vision" className="relative min-h-screen flex items-center pt-24 px-6 overflow-hidden bg-slate-50">
@@ -70,7 +53,7 @@ export default function UltimateLeaderWebsite() {
               <Star size={12} fill="white" /> Model Village Of India
             </div>
             <h1 className="text-6xl md:text-[110px] font-black text-slate-900 uppercase leading-[0.85] mb-8 tracking-tighter">
-              Gramin <span className="text-blue-600">Atma,</span> <br/>Shehri <span className="text-slate-400">Suvidha.</span>
+              Gramin <span className="text-blue-600">Shetra ki,</span> <br/>Nayi<span className="text-slate-400">Awaaz.</span>
             </h1>
             <p className="text-xl text-slate-600 font-bold max-w-2xl leading-relaxed uppercase tracking-tight mb-10">
               Transforming Punsari into a Global Benchmark. Where technology meets tradition to serve the last person in the last household.
@@ -322,90 +305,6 @@ export default function UltimateLeaderWebsite() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="bg-slate-900 text-white pt-24 pb-12 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
-           
-           {/* Column 1: Brand */}
-           <div className="space-y-8">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-blue-600 text-white flex items-center justify-center font-black rounded-xl">A</div>
-                <h3 className="text-xl font-black uppercase tracking-tighter">Aryan Patel</h3>
-              </div>
-              <p className="text-[11px] font-bold uppercase tracking-widest text-slate-500 leading-relaxed">
-                Punsari Gram Panchayat is a self-reliant "Smart Village" framework built on transparency, technology, and trust. 
-              </p>
-              <div className="flex gap-4">
-                 <Link href="#" className="p-3 bg-white/5 rounded-full hover:bg-blue-600 transition-all group">
-                    <Facebook size={18} className="text-slate-400 group-hover:text-white" />
-                 </Link>
-                 <Link href="#" className="p-3 bg-white/5 rounded-full hover:bg-pink-600 transition-all group">
-                    <Instagram size={18} className="text-slate-400 group-hover:text-white" />
-                 </Link>
-                 <Link href="#" className="p-3 bg-white/5 rounded-full hover:bg-sky-500 transition-all group">
-                    <Twitter size={18} className="text-slate-400 group-hover:text-white" />
-                 </Link>
-                 <Link href="#" className="p-3 bg-white/5 rounded-full hover:bg-red-600 transition-all group">
-                    <Youtube size={18} className="text-slate-400 group-hover:text-white" />
-                 </Link>
-              </div>
-           </div>
-
-           {/* Column 2: Quick Links */}
-           <div>
-              <h4 className="text-[10px] font-black uppercase tracking-[4px] text-blue-500 mb-8 underline underline-offset-8">Navigation</h4>
-              <ul className="space-y-4 text-[11px] font-black uppercase tracking-widest text-slate-400">
-                 {navLinks.map((l) => (
-                   <li key={l.name}><Link href={l.href} className="hover:text-white transition-all">/ {l.name}</Link></li>
-                 ))}
-                 <li><Link href="#" className="hover:text-white transition-all">/ Official Records</Link></li>
-              </ul>
-           </div>
-
-           {/* Column 3: Contact Info */}
-           <div>
-              <h4 className="text-[10px] font-black uppercase tracking-[4px] text-blue-500 mb-8 underline underline-offset-8">Connect</h4>
-              <div className="space-y-6 text-[11px] font-black uppercase tracking-widest text-slate-400">
-                 <div className="flex items-start gap-4">
-                    <Mail size={16} className="text-blue-500 mt-1"/>
-                    <p className="leading-relaxed hover:text-white">office@aryanpunsari.in <br/> <span className="text-[8px] opacity-40 italic">Inquiries</span></p>
-                 </div>
-                 <div className="flex items-start gap-4">
-                    <Phone size={16} className="text-blue-500 mt-1"/>
-                    <p className="leading-relaxed hover:text-white">+91 94220-XXXXX <br/> <span className="text-[8px] opacity-40 italic">Gram Sevak</span></p>
-                 </div>
-                 <div className="flex items-start gap-4">
-                    <MapPin size={16} className="text-blue-500 mt-1"/>
-                    <p className="leading-relaxed hover:text-white">Main Road, Punsari <br/> Sabarkantha, Gujarat</p>
-                 </div>
-              </div>
-           </div>
-
-           {/* Column 4: Awards */}
-           <div>
-              <h4 className="text-[10px] font-black uppercase tracking-[4px] text-blue-500 mb-8 underline underline-offset-8">Official Honors</h4>
-              <div className="grid grid-cols-2 gap-4">
-                 <div className="p-3 bg-white/5 rounded-xl text-[8px] font-black uppercase border border-white/10 text-center flex items-center justify-center">Nirmal Gram Puraskar</div>
-                 <div className="p-3 bg-white/5 rounded-xl text-[8px] font-black uppercase border border-white/10 text-center flex items-center justify-center">Swarnim Gram</div>
-                 <div className="p-3 bg-white/5 rounded-xl text-[8px] font-black uppercase border border-white/10 text-center flex items-center justify-center">Best Panchayat</div>
-                 <div className="p-3 bg-white/5 rounded-xl text-[8px] font-black uppercase border border-white/10 text-center flex items-center justify-center">ISO Certified</div>
-              </div>
-           </div>
-
-        </div>
-        
-        {/* Bottom Bar */}
-        <div className="max-w-7xl mx-auto pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-           <div className="flex flex-col gap-2">
-             <p className="text-[9px] font-black uppercase tracking-[5px] text-slate-600">© 2026 Strategic Development Cell | Punsari Village</p>
-             <p className="text-[8px] font-bold uppercase tracking-[2px] text-slate-700 italic">Designed with Vision for Aryan Patel Campaign</p>
-           </div>
-           <div className="flex gap-8 text-[9px] font-black uppercase tracking-[3px] text-slate-500">
-              <span className="hover:text-blue-500 cursor-pointer">Privacy Policy</span>
-              <span className="hover:text-blue-500 cursor-pointer">Transparency Report</span>
-           </div>
-        </div>
-      </footer>
 
       {/* Global CSS for Marquee Animation */}
       <style jsx global>{`
