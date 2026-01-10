@@ -84,7 +84,7 @@ export default function UltimateLeaderWebsite() {
       {[
         "/images/home3.png",
         "/images/home2.png",
-        "/images/imgfour.png",
+        "/images/news3.png",
         "https://res.cloudinary.com/dpccapers/image/upload/v1767774293/WhatsApp_Image_2026-01-07_at_12.47.58_PM_zgcqwp.jpg",
       ].map((src, i) => (
         <div
