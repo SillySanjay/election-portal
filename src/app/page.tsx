@@ -30,61 +30,82 @@ export default function UltimateLeaderWebsite() {
 
   return (
     <main className="bg-[#fcfcfc] font-sans text-slate-900 leading-relaxed antialiased overflow-x-hidden">
-      
-      {/* 1. STICKY NAVIGATION */}
-      {/* <nav className={`fixed top-0 w-full z-[100] transition-all duration-500 ${scrolled ? "bg-white/95 backdrop-blur-md py-3 shadow-lg" : "bg-transparent py-8"}`}>
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-blue-600 text-white flex items-center justify-center font-black rounded-xl shadow-lg rotate-3">A</div>
-          </div>
-        
-          <div className="hidden md:flex gap-4">
-             <Facebook size={18} className="text-slate-400 hover:text-blue-600 cursor-pointer transition-all" />
-             <Twitter size={18} className="text-slate-400 hover:text-sky-500 cursor-pointer transition-all" />
-          </div>
-        </div>
-      </nav> */}
-
       {/* 2. HERO SECTION */}
-      <section id="vision" className="relative min-h-screen flex items-center pt-24 px-6 overflow-hidden bg-slate-50">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
-          <motion.div className="lg:col-span-7 z-10" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-600 text-white text-[10px] font-black uppercase tracking-[4px] mb-8 shadow-xl">
-              <Star size={12} fill="white" /> Model Village Of India
-            </div>
-            <h1 className="text-6xl md:text-[110px] font-black text-slate-900 uppercase leading-[0.85] mb-8 tracking-tighter">
-              Gramin <span className="text-blue-600">Shetra ki,</span> <br/>Nayi<span className="text-slate-400">Awaaz.</span>
-            </h1>
-            <p className="text-xl text-slate-600 font-bold max-w-2xl leading-relaxed uppercase tracking-tight mb-10">
-              Transforming Punsari into a Global Benchmark. Where technology meets tradition to serve the last person in the last household.
+      {/* HERO SECTION */}
+<section
+  id="vision"
+  className="relative min-h-screen flex items-center pt-24 px-4 sm:px-6 bg-slate-50 overflow-hidden"
+>
+  <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
+
+    {/* LEFT CONTENT */}
+    <motion.div
+      className="lg:col-span-7 z-10"
+      initial={{ opacity: 0, x: -40 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6 }}
+    >
+      <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-600 text-white text-[10px] font-black uppercase tracking-[3px] mb-6">
+        <Star size={12} fill="white" /> Model Village Of India
+      </div>
+
+      <h1 className="text-4xl sm:text-6xl md:text-[90px] lg:text-[110px] font-black uppercase leading-tight md:leading-[0.85] tracking-tight mb-6">
+        Gramin <span className="text-blue-600">Shetra ki,</span><br />
+        Nayi <span className="text-slate-400">Awaaz.</span>
+      </h1>
+
+      <p className="text-sm sm:text-base md:text-xl text-slate-600 font-bold max-w-xl mb-8">
+        Transforming Punsari into a Global Benchmark where technology meets tradition.
+      </p>
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        {[
+          { label: "Financial Status", value: "₹75L+ Surplus" },
+          { label: "Security", value: "CCTV Enabled" },
+          { label: "Energy", value: "Solar Grid" },
+        ].map((item, i) => (
+          <div
+            key={i}
+            className="bg-white p-4 border-t-4 border-blue-600 shadow-lg rounded-b-xl"
+          >
+            <p className="text-[10px] font-black text-slate-400 uppercase mb-1">
+              {item.label}
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-               <div className="bg-white p-5 border-t-4 border-blue-600 shadow-xl rounded-b-xl">
-                  <p className="text-[10px] font-black text-slate-400 uppercase mb-2">Financial Status</p>
-                  <p className="text-sm font-black uppercase text-slate-800">₹75L+ Surplus</p>
-               </div>
-               <div className="bg-white p-5 border-t-4 border-blue-600 shadow-xl rounded-b-xl">
-                  <p className="text-[10px] font-black text-slate-400 uppercase mb-2">Security</p>
-                  <p className="text-sm font-black uppercase text-slate-800">CCTV Enabled</p>
-               </div>
-               <div className="bg-white p-5 border-t-4 border-blue-600 shadow-xl rounded-b-xl">
-                  <p className="text-[10px] font-black text-slate-400 uppercase mb-2">Energy</p>
-                  <p className="text-sm font-black uppercase text-slate-800">Solar Grid</p>
-               </div>
-            </div>
-          </motion.div>
-          <div className="lg:col-span-5 relative grid grid-cols-2 gap-4">
-            <div className="space-y-4 pt-12">
-               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border-4 border-white"><Image src="/images/img.jpeg" fill className="object-cover" alt="Aryan Patel" /></div>
-               <div className="relative aspect-square rounded-2xl overflow-hidden shadow-xl"><Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767774287/WhatsApp_Image_2026-01-07_at_12.47.44_PM_1_toy9rh.jpg" fill className="object-cover" alt="School" /></div>
-            </div>
-            <div className="space-y-4">
-               <div className="relative aspect-square rounded-2xl overflow-hidden shadow-xl"><Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767774292/WhatsApp_Image_2026-01-07_at_12.47.57_PM_1_e556te.jpg" fill className="object-cover" alt="Village" /></div>
-               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border-4 border-white"><Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767774293/WhatsApp_Image_2026-01-07_at_12.47.58_PM_zgcqwp.jpg" fill className="object-cover" alt="Agriculture" /></div>
-            </div>
+            <p className="text-xs font-black uppercase text-slate-800">
+              {item.value}
+            </p>
           </div>
+        ))}
+      </div>
+    </motion.div>
+
+    {/* RIGHT IMAGES */}
+    <div className="lg:col-span-5 grid grid-cols-2 gap-4">
+      {[
+        "/images/home3.png",
+        "/images/home2.png",
+        "/images/imgfour.png",
+        "https://res.cloudinary.com/dpccapers/image/upload/v1767774293/WhatsApp_Image_2026-01-07_at_12.47.58_PM_zgcqwp.jpg",
+      ].map((src, i) => (
+        <div
+          key={i}
+          className="relative h-40 sm:h-56 md:h-64 lg:h-72 rounded-2xl overflow-hidden shadow-xl"
+        >
+          <Image
+            src={src}
+            fill
+            sizes="(max-width: 768px) 50vw, 33vw"
+            className="object-cover object-center"
+            alt="Hero Image"
+            priority
+          />
         </div>
-      </section>
+      ))}
+    </div>
+
+  </div>
+</section>
+
 
       {/* NEW: AWARDS MARQUEE SECTION */}
       <div className="bg-slate-900 py-10 overflow-hidden border-y border-white/10">
@@ -105,11 +126,11 @@ export default function UltimateLeaderWebsite() {
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-start">
           <div className="sticky top-28">
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl shadow-2xl border-8 border-slate-50">
-              <Image src="/images/img.jpeg" fill className="object-cover" alt="Leader Aryan" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+              <Image src="/images/architect.png" fill className="object-cover" alt="Leader Aryan" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/100 via-transparent to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-10 text-white">
                  <p className="text-xs font-black uppercase tracking-[4px] text-blue-400 mb-2">The Face Of Change</p>
-                 <h2 className="text-4xl font-black uppercase tracking-tighter">Aryan Himanshu Patel</h2>
+                 <h2 className="text-4xl font-black uppercase tracking-tighter">Aryan Patel</h2>
                  <p className="text-sm font-bold uppercase mt-4 text-white/70 tracking-widest leading-relaxed">
                    "Development is not a favor to the people; it is the duty of the leadership."
                  </p>
@@ -139,7 +160,7 @@ export default function UltimateLeaderWebsite() {
               </div>
             </div>
             <div className="relative h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
-               <Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767784998/ChatGPT_Image_Jan_7_2026_04_52_10_PM_xqujx1.png" fill className="object-cover" alt="Governance" />
+               <Image src="/images/architect2.png" fill className="object-cover" alt="Governance" />
                <div className="absolute top-6 left-6 bg-white px-4 py-2 rounded-lg shadow-lg">
                   <p className="text-[10px] font-black uppercase text-blue-600 tracking-widest">Public Meeting 2025</p>
                </div>
@@ -157,12 +178,12 @@ export default function UltimateLeaderWebsite() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {[
-              { icon: <Droplets/>, title: "Pure RO Water", desc: "Mineral water at ₹4/20L. 100% piped connectivity to every home.", img: "https://res.cloudinary.com/dpccapers/image/upload/v1767774292/WhatsApp_Image_2026-01-07_at_12.47.57_PM_1_e556te.jpg" },
-              { icon: <BookOpen/>, title: "Digital Education", desc: "Smart boards, zero-dropout rate, and air-conditioned libraries.", img: "https://res.cloudinary.com/dpccapers/image/upload/v1767774287/WhatsApp_Image_2026-01-07_at_12.47.44_PM_1_toy9rh.jpg" },
-              { icon: <Bus/>, title: "Atal Express", desc: "Village bus service. Free for students, ₹3 for others per trip.", img: "https://res.cloudinary.com/dpccapers/image/upload/v1767774290/WhatsApp_Image_2026-01-07_at_12.47.47_PM_1_ipdzzt.jpg" },
-              { icon: <Radio/>, title: "Smart Broadcast", desc: "120 speakers connected to the Sarpanch office for live updates.", img: "https://res.cloudinary.com/dpccapers/image/upload/v1767784998/ChatGPT_Image_Jan_7_2026_04_52_10_PM_xqujx1.png" },
-              { icon: <Building2/>, title: "Women Economic Wing", desc: "111 Sakhi Mandals empowering 1200+ rural women entrepreneurs.", img: "https://res.cloudinary.com/dpccapers/image/upload/v1767774291/WhatsApp_Image_2026-01-07_at_12.47.56_PM_1_pncm9s.jpg" },
-              { icon: <ShieldCheck/>, title: "Safe Governance", desc: "24x7 CCTV monitoring for streets, schools, and public assets.", img: "https://res.cloudinary.com/dpccapers/image/upload/v1767774293/WhatsApp_Image_2026-01-07_at_12.47.58_PM_zgcqwp.jpg" },
+              { icon: <Droplets/>, title: "Pure RO Water", desc: "Mineral water at ₹4/20L. 100% piped connectivity to every home.", img: "/images/pillars1.png" },
+              { icon: <BookOpen/>, title: "Digital Education", desc: "Smart boards, zero-dropout rate, and air-conditioned libraries.", img: "/images/pillars2.png" },
+              { icon: <Bus/>, title: "Atal Express", desc: "Village bus service. Free for students, ₹3 for others per trip.", img: "/images/pillars3.png" },
+              { icon: <Radio/>, title: "Smart Broadcast", desc: "120 speakers connected to the Sarpanch office for live updates.", img: "/images/pillars4.png" },
+              { icon: <Building2/>, title: "Women Economic Wing", desc: "111 Sakhi Mandals empowering 1200+ rural women entrepreneurs.", img: "/images/pillars5.png" },
+              { icon: <ShieldCheck/>, title: "Safe Governance", desc: "24x7 CCTV monitoring for streets, schools, and public assets.", img: "/images/pillars6.png" },
             ].map((p, i) => (
               <div key={i} className="group bg-white rounded-[2rem] overflow-hidden shadow-xl border border-slate-100 transition-all hover:-translate-y-2 flex flex-col h-full">
                 <div className="relative h-72 overflow-hidden">
@@ -195,12 +216,18 @@ export default function UltimateLeaderWebsite() {
               </div>
            </div>
            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 auto-rows-[300px]">
-              <div className="relative col-span-2 row-span-2 rounded-[2.5rem] overflow-hidden shadow-2xl"><Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767774292/WhatsApp_Image_2026-01-07_at_12.47.57_PM_1_e556te.jpg" fill className="object-cover" alt="c1" /></div>
-              <div className="relative col-span-1 row-span-1 rounded-[2.5rem] overflow-hidden shadow-xl hover:rotate-2 transition-all"><Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767774287/WhatsApp_Image_2026-01-07_at_12.47.44_PM_1_toy9rh.jpg" fill className="object-cover" alt="c2" /></div>
-              <div className="relative col-span-1 row-span-2 rounded-[2.5rem] overflow-hidden shadow-xl"><Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767774291/WhatsApp_Image_2026-01-07_at_12.47.53_PM_csorlt.jpg" fill className="object-cover" alt="c3" /></div>
-              <div className="relative col-span-1 row-span-1 rounded-[2.5rem] overflow-hidden shadow-xl hover:-rotate-2 transition-all"><Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767774290/WhatsApp_Image_2026-01-07_at_12.47.47_PM_1_ipdzzt.jpg" fill className="object-cover" alt="c4" /></div>
-              <div className="relative col-span-2 row-span-1 rounded-[2.5rem] overflow-hidden shadow-xl"><Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767784998/ChatGPT_Image_Jan_7_2026_04_52_10_PM_xqujx1.png" fill className="object-cover" alt="c5" /></div>
-              <div className="relative col-span-1 row-span-1 rounded-[2.5rem] overflow-hidden shadow-xl"><Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767774293/WhatsApp_Image_2026-01-07_at_12.47.58_PM_zgcqwp.jpg" fill className="object-cover" alt="c6" /></div>
+              <div className="relative col-span-2 row-span-2 rounded-[2.5rem] overflow-hidden shadow-2xl">
+                <Image src="/images/life1.png" fill className="object-cover" alt="c1" /></div>
+              <div className="relative col-span-1 row-span-1 rounded-[2.5rem] overflow-hidden shadow-xl hover:rotate-2 transition-all">
+                <Image src="/images/life2.png" fill className="object-cover" alt="c2" /></div>
+              <div className="relative col-span-1 row-span-2 rounded-[2.5rem] overflow-hidden shadow-xl">
+                <Image src="/images/life5.png" fill className="object-cover" alt="c3" /></div>
+              <div className="relative col-span-1 row-span-1 rounded-[2.5rem] overflow-hidden shadow-xl hover:-rotate-2 transition-all">
+                <Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767774290/WhatsApp_Image_2026-01-07_at_12.47.47_PM_1_ipdzzt.jpg" fill className="object-cover" alt="c4" /></div>
+              <div className="relative col-span-2 row-span-1 rounded-[2.5rem] overflow-hidden shadow-xl">
+                <Image src="/images/life4.png" fill className="object-cover" alt="c5" /></div>
+              <div className="relative col-span-1 row-span-1 rounded-[2.5rem] overflow-hidden shadow-xl">
+                <Image src="/images/life3.png" fill className="object-cover" alt="c6" /></div>
            </div>
         </div>
       </section>
@@ -264,7 +291,7 @@ export default function UltimateLeaderWebsite() {
               </div>
             </div>
             <div className="relative aspect-square md:aspect-video rounded-[3rem] overflow-hidden shadow-2xl border-4 border-slate-50">
-               <Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767785378/ChatGPT_Image_Jan_7_2026_04_52_10_PM_xqujx1.png" fill className="object-cover" alt="Data" />
+               <Image src="/images/financialdiscipline.png" fill className="object-cover" alt="Data" />
                <div className="absolute inset-0 bg-blue-900/10"></div>
             </div>
           </div>

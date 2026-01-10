@@ -16,7 +16,7 @@ export default function GeographyPage() {
         {/* Top Image Wall */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
           <div className="relative h-[400px] rounded-3xl overflow-hidden shadow-2xl border-4 border-slate-50">
-            <Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767774292/WhatsApp_Image_2026-01-07_at_12.47.57_PM_1_e556te.jpg" fill className="object-cover" alt="Village View" />
+            <Image src="/images/geography1.png" fill className="object-cover" alt="Village View" />
           </div>
           <div className="flex flex-col justify-center space-y-6">
             <h3 className="text-3xl font-black uppercase text-slate-900 italic underline decoration-blue-600 underline-offset-8">Location Strategy</h3>

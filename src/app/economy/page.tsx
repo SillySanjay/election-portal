@@ -25,7 +25,7 @@ export default function EconomyPage() {
             </div>
           </div>
           <div className="relative h-[400px] rounded-3xl overflow-hidden shadow-2xl">
-            <Image src="https://res.cloudinary.com/dpccapers/image/upload/v1767774293/WhatsApp_Image_2026-01-07_at_12.47.58_PM_zgcqwp.jpg" fill className="object-cover" alt="Agri economy" />
+            <Image src="/images/e.png" fill className="object-cover" alt="Agri economy" />
           </div>
         </div>
 
