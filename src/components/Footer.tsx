@@ -96,18 +96,6 @@ export default function Footer() {
          </div>
 
       </div>
-      
-      {/* Copyright Bar */}
-      <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[9px] font-black uppercase tracking-[5px] text-slate-500">
-         <div className="flex items-center gap-2">
-            <ShieldCheck size={14} className="text-blue-600" />
-            <span>© 2026 Strategic Development Cell | Aryan Patel Campaign</span>
-         </div>
-         <div className="flex gap-8">
-            <span className="hover:text-white cursor-pointer transition-colors tracking-[2px]">Privacy Policy</span>
-            <span className="hover:text-white cursor-pointer transition-colors tracking-[2px]">Admin Login</span>
-         </div>
-      </div>
-    </footer>
+          </footer>
   );
 }
